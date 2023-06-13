@@ -15,7 +15,7 @@ let imgarr = [OlegCastle, Pechereniy, Rock]
 function Item(props){
     return(
         
-        
+       <div className="row">
         <div className='item'>
             <div className="item__place">
                 <img className='item__img' src={imgarr[props.img]} alt="" />
@@ -27,11 +27,16 @@ function Item(props){
                <div className="item__text">Вартість</div>
                <div className="item__price">{props.price}</div>
                <div className="item__location">
-                   <div className="item__location__img"></div>
+                   <img className='item__location__img' src={locationPng} alt="" />
                    <div className="item__text">{props.location}</div>
                </div>
             </div>
         </div>
+        <div className="likeRow">
+            <div className="like"></div>
+            <p className="likeCount">0</p>
+        </div>
+        </div>  
      
     )
 }
