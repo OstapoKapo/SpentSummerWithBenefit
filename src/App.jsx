@@ -1,6 +1,4 @@
 import './App.css'
-
-import Clicker from "./components/CLicker/Clicker"
 import Item from './components/Items/Items'
 
 
