@@ -2,17 +2,35 @@ import './Items.css'
 import OlegCastle from './img/Olesko_Castle.jpg'
 import locationPng from './img/location.webp'
 import Pechereniy from './img/pechernyy_monastyr_rozgirche.jpg'
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "swiper/css/effect-fade";
+import { useState } from 'react';
+import ActiveLike from './img/heart-image-13.png';
+import Like from './img/whiteHeart.svg.png'
 import Rock from './img/rock.jpg'
 let imgarr = [OlegCastle, Pechereniy, Rock]
 
 
 function Item(props){
+    const [likeCheck, setLikeCheck] = useState(false);
+    const [count, setCount] = useState(0);
+    
+    function plusLike(){
+        setCount(count + 1);
+    }
+    function minusLike(){
+        setCount(count - 1);
+    }
+    function handleClick() {
+       if(!likeCheck){
+        plusLike()
+       }else if(likeCheck){
+        minusLike()
+       }
+       setLikeCheck(current => !current);
+      }
+
+     
+
+    
     return(
         
        <div className="row">
@@ -33,8 +51,10 @@ function Item(props){
             </div>
         </div>
         <div className="likeRow">
-            <div className="like"></div>
-            <p className="likeCount">0</p>
+            <div className="like" style={{
+          backgroundImage: likeCheck ? `url(${ActiveLike})` : `url(${Like})`
+        }} onClick={handleClick}></div>
+            <p className="likeCount">{count}</p>
         </div>
         </div>  
      
